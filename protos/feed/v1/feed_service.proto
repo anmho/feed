@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "protos/feed/v1/feed_messages.proto";
+
+package protos.feed.v1;
+
+option go_package = "feed/gen/protos/feed/v1;feedv1";
+
+service FeedService {
+    rpc SyncFeed(SyncFeedRequest)
+        returns (SyncFeedResponse) {}
+
+    rpc CreatePost(CreatePostRequest)
+        returns (CreatePostResponse) {}
+
+    rpc FollowUser(FollowUserRequest)
+        returns (FollowUserResponse) {}
+}

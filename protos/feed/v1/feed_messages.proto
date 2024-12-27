@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package protos.feed.v1;
+
+option go_package = "feed/gen/protos/feed/v1/feedv1";
+
+message Post {
+    string id = 1;
+    string content = 2;
+}
+
+// initially we will get all posts, but we will implement:
+// 1) cursor based pagination 
+// 2) pagination token based pagination
+// 3) timestamp based pagination
+// the user's id will be in the header
+message SyncFeedRequest {
+}
+
+message SyncFeedResponse {
+    repeated Post items = 1;
+}
+
+message CreatePostRequest {
+    string id = 1; // this serves as the idempotency token
+    string content = 2;
+}
+
+// client should have all the data it needs to populate on its end
+// return no data to minimize egress and data transfer
+// server will simply ack
+message CreatePostResponse {
+}
+
+// the following user will be in the header
+message FollowUserRequest {
+    string user_id = 1;
+}
+
+message FollowUserResponse {
+}
