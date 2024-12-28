@@ -5,6 +5,7 @@ import (
 	"errors"
 	"net/http"
 
+	"feed/gen/protos/feed/v1/feedv1connect"
 	"feed/gen/protos/greet/v1/greetv1connect"
 	"feed/pkg/server"
 
@@ -32,10 +33,14 @@ const (
 )
 
 func main() {
-	greeter := &server.GreetServer{}
-	mux := http.NewServeMux()
 
-	mux.Handle(greetv1connect.NewGreetServiceHandler(greeter))
+	// db, err := sql.Open("pgx", fmt.Sprintf("postgres://%s:%s@%s:%s/%s"))
+
+	greetService := server.NewGreetService()
+	feedService := server.MakeFeedService(nil)
+	mux := http.NewServeMux()
+	mux.Handle(greetv1connect.NewGreetServiceHandler(greetService))
+	mux.Handle(feedv1connect.NewFeedServiceHandler(feedService))
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
 		if _, err := w.Write([]byte("ok")); err != nil {
 			http.Error(w, "unexpected error", http.StatusInternalServerError)

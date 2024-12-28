@@ -7,7 +7,6 @@
 package feedv1
 
 import (
-	feedv1 "feed/gen/protos/feed/v1/feedv1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -51,12 +50,12 @@ var file_protos_feed_v1_feed_service_proto_rawDesc = []byte{
 }
 
 var file_protos_feed_v1_feed_service_proto_goTypes = []any{
-	(*feedv1.SyncFeedRequest)(nil),    // 0: protos.feed.v1.SyncFeedRequest
-	(*feedv1.CreatePostRequest)(nil),  // 1: protos.feed.v1.CreatePostRequest
-	(*feedv1.FollowUserRequest)(nil),  // 2: protos.feed.v1.FollowUserRequest
-	(*feedv1.SyncFeedResponse)(nil),   // 3: protos.feed.v1.SyncFeedResponse
-	(*feedv1.CreatePostResponse)(nil), // 4: protos.feed.v1.CreatePostResponse
-	(*feedv1.FollowUserResponse)(nil), // 5: protos.feed.v1.FollowUserResponse
+	(*SyncFeedRequest)(nil),    // 0: protos.feed.v1.SyncFeedRequest
+	(*CreatePostRequest)(nil),  // 1: protos.feed.v1.CreatePostRequest
+	(*FollowUserRequest)(nil),  // 2: protos.feed.v1.FollowUserRequest
+	(*SyncFeedResponse)(nil),   // 3: protos.feed.v1.SyncFeedResponse
+	(*CreatePostResponse)(nil), // 4: protos.feed.v1.CreatePostResponse
+	(*FollowUserResponse)(nil), // 5: protos.feed.v1.FollowUserResponse
 }
 var file_protos_feed_v1_feed_service_proto_depIdxs = []int32{
 	0, // 0: protos.feed.v1.FeedService.SyncFeed:input_type -> protos.feed.v1.SyncFeedRequest
@@ -77,6 +76,7 @@ func file_protos_feed_v1_feed_service_proto_init() {
 	if File_protos_feed_v1_feed_service_proto != nil {
 		return
 	}
+	file_protos_feed_v1_feed_messages_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

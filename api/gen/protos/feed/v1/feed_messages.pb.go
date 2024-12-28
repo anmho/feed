@@ -20,6 +20,59 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type User struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Name   string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *User) Reset() {
+	*x = User{}
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *User) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User) ProtoMessage() {}
+
+func (x *User) ProtoReflect() protoreflect.Message {
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) {
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *User) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *User) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 type Post struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -31,7 +84,7 @@ type Post struct {
 
 func (x *Post) Reset() {
 	*x = Post{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[0]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +96,7 @@ func (x *Post) String() string {
 func (*Post) ProtoMessage() {}
 
 func (x *Post) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[0]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +109,7 @@ func (x *Post) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Post.ProtoReflect.Descriptor instead.
 func (*Post) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{0}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Post) GetId() string {
@@ -86,7 +139,7 @@ type SyncFeedRequest struct {
 
 func (x *SyncFeedRequest) Reset() {
 	*x = SyncFeedRequest{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[1]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -98,7 +151,7 @@ func (x *SyncFeedRequest) String() string {
 func (*SyncFeedRequest) ProtoMessage() {}
 
 func (x *SyncFeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[1]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -111,7 +164,7 @@ func (x *SyncFeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SyncFeedRequest.ProtoReflect.Descriptor instead.
 func (*SyncFeedRequest) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{1}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{2}
 }
 
 type SyncFeedResponse struct {
@@ -124,7 +177,7 @@ type SyncFeedResponse struct {
 
 func (x *SyncFeedResponse) Reset() {
 	*x = SyncFeedResponse{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[2]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -136,7 +189,7 @@ func (x *SyncFeedResponse) String() string {
 func (*SyncFeedResponse) ProtoMessage() {}
 
 func (x *SyncFeedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[2]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -149,7 +202,7 @@ func (x *SyncFeedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SyncFeedResponse.ProtoReflect.Descriptor instead.
 func (*SyncFeedResponse) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{2}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SyncFeedResponse) GetItems() []*Post {
@@ -170,7 +223,7 @@ type CreatePostRequest struct {
 
 func (x *CreatePostRequest) Reset() {
 	*x = CreatePostRequest{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[3]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +235,7 @@ func (x *CreatePostRequest) String() string {
 func (*CreatePostRequest) ProtoMessage() {}
 
 func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[3]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +248,7 @@ func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostRequest.ProtoReflect.Descriptor instead.
 func (*CreatePostRequest) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{3}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreatePostRequest) GetId() string {
@@ -212,6 +265,9 @@ func (x *CreatePostRequest) GetContent() string {
 	return ""
 }
 
+// client should have all the data it needs to populate on its end
+// return no data to minimize egress and data transfer
+// server will simply ack
 type CreatePostResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -220,7 +276,7 @@ type CreatePostResponse struct {
 
 func (x *CreatePostResponse) Reset() {
 	*x = CreatePostResponse{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[4]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -232,7 +288,7 @@ func (x *CreatePostResponse) String() string {
 func (*CreatePostResponse) ProtoMessage() {}
 
 func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[4]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,7 +301,7 @@ func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostResponse.ProtoReflect.Descriptor instead.
 func (*CreatePostResponse) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{4}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{5}
 }
 
 // the following user will be in the header
@@ -259,7 +315,7 @@ type FollowUserRequest struct {
 
 func (x *FollowUserRequest) Reset() {
 	*x = FollowUserRequest{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[5]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -271,7 +327,7 @@ func (x *FollowUserRequest) String() string {
 func (*FollowUserRequest) ProtoMessage() {}
 
 func (x *FollowUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[5]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -284,7 +340,7 @@ func (x *FollowUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FollowUserRequest.ProtoReflect.Descriptor instead.
 func (*FollowUserRequest) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{5}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *FollowUserRequest) GetUserId() string {
@@ -302,7 +358,7 @@ type FollowUserResponse struct {
 
 func (x *FollowUserResponse) Reset() {
 	*x = FollowUserResponse{}
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[6]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +370,7 @@ func (x *FollowUserResponse) String() string {
 func (*FollowUserResponse) ProtoMessage() {}
 
 func (x *FollowUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[6]
+	mi := &file_protos_feed_v1_feed_messages_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +383,7 @@ func (x *FollowUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FollowUserResponse.ProtoReflect.Descriptor instead.
 func (*FollowUserResponse) Descriptor() ([]byte, []int) {
-	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{6}
+	return file_protos_feed_v1_feed_messages_proto_rawDescGZIP(), []int{7}
 }
 
 var File_protos_feed_v1_feed_messages_proto protoreflect.FileDescriptor
@@ -336,27 +392,31 @@ var file_protos_feed_v1_feed_messages_proto_rawDesc = []byte{
 	0x0a, 0x22, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x65, 0x65, 0x64, 0x2f, 0x76, 0x31,
 	0x2f, 0x66, 0x65, 0x65, 0x64, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2e, 0x66, 0x65, 0x65,
-	0x64, 0x2e, 0x76, 0x31, 0x22, 0x30, 0x0a, 0x04, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07,
-	0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63,
-	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x11, 0x0a, 0x0f, 0x53, 0x79, 0x6e, 0x63, 0x46, 0x65,
-	0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x3e, 0x0a, 0x10, 0x53, 0x79, 0x6e,
-	0x63, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2a, 0x0a,
-	0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2e, 0x66, 0x65, 0x65, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x6f,
-	0x73, 0x74, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x22, 0x3d, 0x0a, 0x11, 0x43, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18,
-	0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x14, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2c,
-	0x0a, 0x11, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x22, 0x14, 0x0a, 0x12,
-	0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x42, 0x20, 0x5a, 0x1e, 0x66, 0x65, 0x65, 0x64, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x65, 0x65, 0x64, 0x2f, 0x76, 0x31, 0x2f, 0x66, 0x65,
-	0x65, 0x64, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x64, 0x2e, 0x76, 0x31, 0x22, 0x33, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x17, 0x0a, 0x07,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75,
+	0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x30, 0x0a, 0x04, 0x50, 0x6f, 0x73,
+	0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69,
+	0x64, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x11, 0x0a, 0x0f, 0x53,
+	0x79, 0x6e, 0x63, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x3e,
+	0x0a, 0x10, 0x53, 0x79, 0x6e, 0x63, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x2a, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x14, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2e, 0x66, 0x65, 0x65, 0x64, 0x2e,
+	0x76, 0x31, 0x2e, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x22, 0x3d,
+	0x0a, 0x11, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x14, 0x0a,
+	0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x2c, 0x0a, 0x11, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72,
+	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49,
+	0x64, 0x22, 0x14, 0x0a, 0x12, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x55, 0x73, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x20, 0x5a, 0x1e, 0x66, 0x65, 0x65, 0x64, 0x2f,
+	0x67, 0x65, 0x6e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x65, 0x65, 0x64, 0x2f,
+	0x76, 0x31, 0x3b, 0x66, 0x65, 0x65, 0x64, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -371,18 +431,19 @@ func file_protos_feed_v1_feed_messages_proto_rawDescGZIP() []byte {
 	return file_protos_feed_v1_feed_messages_proto_rawDescData
 }
 
-var file_protos_feed_v1_feed_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_protos_feed_v1_feed_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_protos_feed_v1_feed_messages_proto_goTypes = []any{
-	(*Post)(nil),               // 0: protos.feed.v1.Post
-	(*SyncFeedRequest)(nil),    // 1: protos.feed.v1.SyncFeedRequest
-	(*SyncFeedResponse)(nil),   // 2: protos.feed.v1.SyncFeedResponse
-	(*CreatePostRequest)(nil),  // 3: protos.feed.v1.CreatePostRequest
-	(*CreatePostResponse)(nil), // 4: protos.feed.v1.CreatePostResponse
-	(*FollowUserRequest)(nil),  // 5: protos.feed.v1.FollowUserRequest
-	(*FollowUserResponse)(nil), // 6: protos.feed.v1.FollowUserResponse
+	(*User)(nil),               // 0: protos.feed.v1.User
+	(*Post)(nil),               // 1: protos.feed.v1.Post
+	(*SyncFeedRequest)(nil),    // 2: protos.feed.v1.SyncFeedRequest
+	(*SyncFeedResponse)(nil),   // 3: protos.feed.v1.SyncFeedResponse
+	(*CreatePostRequest)(nil),  // 4: protos.feed.v1.CreatePostRequest
+	(*CreatePostResponse)(nil), // 5: protos.feed.v1.CreatePostResponse
+	(*FollowUserRequest)(nil),  // 6: protos.feed.v1.FollowUserRequest
+	(*FollowUserResponse)(nil), // 7: protos.feed.v1.FollowUserResponse
 }
 var file_protos_feed_v1_feed_messages_proto_depIdxs = []int32{
-	0, // 0: protos.feed.v1.SyncFeedResponse.items:type_name -> protos.feed.v1.Post
+	1, // 0: protos.feed.v1.SyncFeedResponse.items:type_name -> protos.feed.v1.Post
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -401,7 +462,7 @@ func file_protos_feed_v1_feed_messages_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_protos_feed_v1_feed_messages_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

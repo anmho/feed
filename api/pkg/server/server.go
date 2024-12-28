@@ -5,20 +5,23 @@ import (
 	"fmt"
 	"log"
 
-	"connectrpc.com/connect"
 	greetv1 "feed/gen/protos/greet/v1"
 	"feed/gen/protos/greet/v1/greetv1connect"
+
+	"connectrpc.com/connect"
 )
 
-var _ greetv1connect.GreetServiceHandler = (*GreetServer)(nil)
+var _ greetv1connect.GreetServiceHandler = (*GreetService)(nil)
 
-type GreetServer struct{}
-
-func New() *GreetServer {
-	return &GreetServer{}
+type GreetService struct {
 }
 
-func (s *GreetServer) Greet(
+func NewGreetService() *GreetService {
+	greeter := &GreetService{}
+	return greeter
+}
+
+func (s *GreetService) Greet(
 	ctx context.Context,
 	req *connect.Request[greetv1.GreetRequest],
 ) (*connect.Response[greetv1.GreetResponse], error) {

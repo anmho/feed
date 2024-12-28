@@ -4,8 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"connectrpc.com/connect"
 	greetv1 "feed/gen/protos/greet/v1"
+
+	"connectrpc.com/connect"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -30,9 +31,9 @@ func TestServer_Greet(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			s := New()
+			greetService := NewGreetService()
 
-			resp, err := s.Greet(context.Background(), tc.request)
+			resp, err := greetService.Greet(context.Background(), tc.request)
 
 			assert.NoError(t, err)
 			assert.NotNil(t, resp)

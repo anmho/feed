@@ -9,7 +9,6 @@ import (
 	context "context"
 	errors "errors"
 	v1 "feed/gen/protos/feed/v1"
-	feedv1 "feed/gen/protos/feed/v1/feedv1"
 	http "net/http"
 	strings "strings"
 )
@@ -52,9 +51,9 @@ var (
 
 // FeedServiceClient is a client for the protos.feed.v1.FeedService service.
 type FeedServiceClient interface {
-	SyncFeed(context.Context, *connect.Request[feedv1.SyncFeedRequest]) (*connect.Response[feedv1.SyncFeedResponse], error)
-	CreatePost(context.Context, *connect.Request[feedv1.CreatePostRequest]) (*connect.Response[feedv1.CreatePostResponse], error)
-	FollowUser(context.Context, *connect.Request[feedv1.FollowUserRequest]) (*connect.Response[feedv1.FollowUserResponse], error)
+	SyncFeed(context.Context, *connect.Request[v1.SyncFeedRequest]) (*connect.Response[v1.SyncFeedResponse], error)
+	CreatePost(context.Context, *connect.Request[v1.CreatePostRequest]) (*connect.Response[v1.CreatePostResponse], error)
+	FollowUser(context.Context, *connect.Request[v1.FollowUserRequest]) (*connect.Response[v1.FollowUserResponse], error)
 }
 
 // NewFeedServiceClient constructs a client for the protos.feed.v1.FeedService service. By default,
@@ -67,19 +66,19 @@ type FeedServiceClient interface {
 func NewFeedServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) FeedServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &feedServiceClient{
-		syncFeed: connect.NewClient[feedv1.SyncFeedRequest, feedv1.SyncFeedResponse](
+		syncFeed: connect.NewClient[v1.SyncFeedRequest, v1.SyncFeedResponse](
 			httpClient,
 			baseURL+FeedServiceSyncFeedProcedure,
 			connect.WithSchema(feedServiceSyncFeedMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		createPost: connect.NewClient[feedv1.CreatePostRequest, feedv1.CreatePostResponse](
+		createPost: connect.NewClient[v1.CreatePostRequest, v1.CreatePostResponse](
 			httpClient,
 			baseURL+FeedServiceCreatePostProcedure,
 			connect.WithSchema(feedServiceCreatePostMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		followUser: connect.NewClient[feedv1.FollowUserRequest, feedv1.FollowUserResponse](
+		followUser: connect.NewClient[v1.FollowUserRequest, v1.FollowUserResponse](
 			httpClient,
 			baseURL+FeedServiceFollowUserProcedure,
 			connect.WithSchema(feedServiceFollowUserMethodDescriptor),
@@ -90,31 +89,31 @@ func NewFeedServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // feedServiceClient implements FeedServiceClient.
 type feedServiceClient struct {
-	syncFeed   *connect.Client[feedv1.SyncFeedRequest, feedv1.SyncFeedResponse]
-	createPost *connect.Client[feedv1.CreatePostRequest, feedv1.CreatePostResponse]
-	followUser *connect.Client[feedv1.FollowUserRequest, feedv1.FollowUserResponse]
+	syncFeed   *connect.Client[v1.SyncFeedRequest, v1.SyncFeedResponse]
+	createPost *connect.Client[v1.CreatePostRequest, v1.CreatePostResponse]
+	followUser *connect.Client[v1.FollowUserRequest, v1.FollowUserResponse]
 }
 
 // SyncFeed calls protos.feed.v1.FeedService.SyncFeed.
-func (c *feedServiceClient) SyncFeed(ctx context.Context, req *connect.Request[feedv1.SyncFeedRequest]) (*connect.Response[feedv1.SyncFeedResponse], error) {
+func (c *feedServiceClient) SyncFeed(ctx context.Context, req *connect.Request[v1.SyncFeedRequest]) (*connect.Response[v1.SyncFeedResponse], error) {
 	return c.syncFeed.CallUnary(ctx, req)
 }
 
 // CreatePost calls protos.feed.v1.FeedService.CreatePost.
-func (c *feedServiceClient) CreatePost(ctx context.Context, req *connect.Request[feedv1.CreatePostRequest]) (*connect.Response[feedv1.CreatePostResponse], error) {
+func (c *feedServiceClient) CreatePost(ctx context.Context, req *connect.Request[v1.CreatePostRequest]) (*connect.Response[v1.CreatePostResponse], error) {
 	return c.createPost.CallUnary(ctx, req)
 }
 
 // FollowUser calls protos.feed.v1.FeedService.FollowUser.
-func (c *feedServiceClient) FollowUser(ctx context.Context, req *connect.Request[feedv1.FollowUserRequest]) (*connect.Response[feedv1.FollowUserResponse], error) {
+func (c *feedServiceClient) FollowUser(ctx context.Context, req *connect.Request[v1.FollowUserRequest]) (*connect.Response[v1.FollowUserResponse], error) {
 	return c.followUser.CallUnary(ctx, req)
 }
 
 // FeedServiceHandler is an implementation of the protos.feed.v1.FeedService service.
 type FeedServiceHandler interface {
-	SyncFeed(context.Context, *connect.Request[feedv1.SyncFeedRequest]) (*connect.Response[feedv1.SyncFeedResponse], error)
-	CreatePost(context.Context, *connect.Request[feedv1.CreatePostRequest]) (*connect.Response[feedv1.CreatePostResponse], error)
-	FollowUser(context.Context, *connect.Request[feedv1.FollowUserRequest]) (*connect.Response[feedv1.FollowUserResponse], error)
+	SyncFeed(context.Context, *connect.Request[v1.SyncFeedRequest]) (*connect.Response[v1.SyncFeedResponse], error)
+	CreatePost(context.Context, *connect.Request[v1.CreatePostRequest]) (*connect.Response[v1.CreatePostResponse], error)
+	FollowUser(context.Context, *connect.Request[v1.FollowUserRequest]) (*connect.Response[v1.FollowUserResponse], error)
 }
 
 // NewFeedServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -158,14 +157,14 @@ func NewFeedServiceHandler(svc FeedServiceHandler, opts ...connect.HandlerOption
 // UnimplementedFeedServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedFeedServiceHandler struct{}
 
-func (UnimplementedFeedServiceHandler) SyncFeed(context.Context, *connect.Request[feedv1.SyncFeedRequest]) (*connect.Response[feedv1.SyncFeedResponse], error) {
+func (UnimplementedFeedServiceHandler) SyncFeed(context.Context, *connect.Request[v1.SyncFeedRequest]) (*connect.Response[v1.SyncFeedResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("protos.feed.v1.FeedService.SyncFeed is not implemented"))
 }
 
-func (UnimplementedFeedServiceHandler) CreatePost(context.Context, *connect.Request[feedv1.CreatePostRequest]) (*connect.Response[feedv1.CreatePostResponse], error) {
+func (UnimplementedFeedServiceHandler) CreatePost(context.Context, *connect.Request[v1.CreatePostRequest]) (*connect.Response[v1.CreatePostResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("protos.feed.v1.FeedService.CreatePost is not implemented"))
 }
 
-func (UnimplementedFeedServiceHandler) FollowUser(context.Context, *connect.Request[feedv1.FollowUserRequest]) (*connect.Response[feedv1.FollowUserResponse], error) {
+func (UnimplementedFeedServiceHandler) FollowUser(context.Context, *connect.Request[v1.FollowUserRequest]) (*connect.Response[v1.FollowUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("protos.feed.v1.FeedService.FollowUser is not implemented"))
 }
